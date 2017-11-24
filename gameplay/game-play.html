@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Ninja Gold</title>
+  
+  		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<link rel="stylesheet" href="../Frameworks/Bootstrap 3.3.7/css/bootstrap.min.css" type="text/css" />
+		<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+	<center><img src="../images/ninjagoldbanner.png"  class="ninjalogobanner"></center>		
+	<div class="character col-md-5">
+	<div class="charactercontainer" >	
+	<center><strong>TRYS:</strong> </center><input  id = "trys" class="form-control col-sm-1 textbox-margin" value = 20 disabled>
+	<center><strong>GOLD/S:</strong> </center><input id = "goldearned"  class="form-control col-sm-1 textbox-margin" value = 0 readonly>
+	<center><strong>CHOOSE NINJA:</strong></center>
+
+	<button id="ninja1" onclick="document.getElementById('characterninja').src='../images/ninja5.gif'" class="switchninja btn-primary">NINJA 1</button>
+	<button id="ninja2" onclick="document.getElementById('characterninja').src='../images/ninja7.gif'" class="switchninja btn-primary">NINJA 2</button>
+	<button id="ninja3" onclick="document.getElementById('characterninja').src='../images/ninja8.gif'" class="switchninja btn-primary">NINJA 3</button>
+
+	<center><button class = "btnstart btn-success" onclick="startButton()" id = "btnstart">START</button></center>
+	<center><button class = "btnreset btn-danger" onclick="resetButton()" id = "btnreset" disabled>RESET GAME</button></center>
+	<center><button class = "btnplayagain btn-info" onclick="homeButton()" id = "btnplayagain" >MAIN MENU</button></center>
+	
+	</div>
+	</div>
+	<div class="mainboardgame col-md-8">
+				<div class="boardgame" >
+					<img src = "../images/ninja5.gif" id="characterninja" class="ninjagif">
+						<button onClick=move_ninja('CAVE') class = "buttoncave btn btn-info" id = "cavebutton" disabled>CAVE</button>
+						<button onClick=move_ninja('MINE') class = "buttonmine btn btn-info" id = "minebutton" disabled>MINE</button>
+						<button onClick=move_ninja('HOUSE') class = "buttonhouse btn btn-info" id = "housebutton" disabled>HOUSE</button>
+						<button onClick=move_ninja('CASINO') class = "buttoncasino btn btn-info" id = "casinobutton" disabled>CASINO</button>
+  					<img src = "../images/places.png" class = "img" >
+				</div>									
+	</div>				
+	</div>					
+	<div class="maingamelog col-md-4">
+		<form method="post" name="frm">
+			<div class="gamelog" >
+				<div  class="gamelog-title list-group-item">
+						<h3 class="panel-title"><hr></h3>
+							<center><h2> GAME LOG</h2>
+							<ul class="nav nav-tabs">
+								<li class = "active"><a data-toggle="tab" href="#record1">All</a></li>
+								<li><a data-toggle="tab" href="#record2">WINS</a></li>
+								<li><a data-toggle="tab" href="#record3">LOSSES</a></li>
+							</ul>
+						</center>
+						<div class="tab-content showback">
+							<div id="record1" class="tab-pane fade in active pan-style"></div>
+							<div id="record2" class="tab-pane fade pan-style"></div>
+							<div id="record3" class="tab-pane fade pan-style"></div>
+						</div>
+							<div class = "col-xs-12 textboxlogs">
+								<center><strong>Total Losses:</strong> </center><input id = "lost"  class="form-control col-sm-1 textbox-margin" value = 0 readonly>
+								<center><strong>Total Win:</strong> </center><input id = "gained"  class="form-control col-sm-1 textbox-margin" value = 0 readonly>
+							</div>
+						</div>					
+		</form>					
+	</div>
+	</div>
+<script type="text/javascript" src = "../js/jquery.min.js"></script>
+<script type="text/javascript" src = "../js/bootstrap.js"></script>	
+<script type="text/javascript">
+
+var curclick =  -1;
+var goldearned = 0;
+var percent = 0;
+var trys = 20;
+var wins  = [0];
+var debits = [0];
+var events = [];
+				
+function homeButton() {
+	window.location.href = '../index.html';
+}
+function startButton() {
+	
+	$('#ninja1').attr('disabled',true);
+	$('#ninja2').attr('disabled',true);
+	$('#ninja3').attr('disabled',true);
+	$('#btnstart').attr('disabled',true);
+	$('#cavebutton').attr('disabled',false);
+	$('#casinobutton').attr('disabled',false);
+	$('#housebutton').attr('disabled',false);
+	$('#minebutton').attr('disabled',false);
+	$('#btnreset').attr('disabled',false);
+			
+	
+}
+function resetButton() {
+
+    var txt;
+    if (confirm("Are you sure you want to reset ?") == true) {
+      	trys = 20;
+						debits = [0];
+						wins = [0];
+						events = [];
+						curclick = -1;
+						goldearned = 0;
+
+						
+						$('#trys').val(trys);
+						$('#goldearned').val(goldearned);
+						$('#goldearned').css({ 'background-color': '#EEEEEE','color':'black'});
+						$("#characterninja").animate({ top: '0px', left: '0px',});
+						$("#record1").html("");$("#record2").html("");$("#record3").html("");	
+						$('#cavebutton').attr('disabled',true);
+						$('#housebutton').attr('disabled',true);
+						$('#minebutton').attr('disabled',true);
+						$('#casinobutton').attr('disabled',true);
+						$('#btnreset').attr('disabled',true);
+						$('#btnstart').attr('disabled',false);
+						$('#ninja3').attr('disabled',false);
+						$('#ninja2').attr('disabled',false);
+						$('#ninja1').attr('disabled',false);
+						$('#gained').val(0);
+						$('#lost').val(0);
+    } else {
+
+    }
+    document.getElementById("demo").innerHTML = txt;
+}
+
+
+function move_ninja(str) {
+
+
+switch(str){
+
+
+case "CAVE":
+document.getElementById('characterninja').style.top=170 + "px";
+document.getElementById('characterninja').style.left=20 + "px";
+
+						--trys;		
+						$('#trys').val(trys);
+						goldearned+=5;
+						wins.push(5);
+						$('#goldearned').val(goldearned);
+						$('#goldearned').css({ 'background-color': 'green','color':'black'});
+						events.push({location:'Cave',time: new Date().toLocaleString(), amount:5});
+						curclick += 1;
+						output();
+						if(trys==0){gameEnd();}
+						check();
+						var totalwin = wins.reduce(getSum);
+						$('#gained').val(totalwin);
+break;
+
+
+
+
+
+case "HOUSE":
+document.getElementById('characterninja').style.top=10 + "px";
+document.getElementById('characterninja').style.left=230 + "px";
+--trys;	
+						$('#trys').val(trys);
+						percent = Math.floor((Math.random() * 10) + 1);
+						++curclick;
+						if(percent>2){
+							goldearned+=10
+							wins.push(10);
+							$('#goldearned').val(goldearned);
+							$('#goldearned').css({ 'background-color': 'green','color':'black'});
+							events.push({location:'House',time: new Date().toLocaleString(), amount:10});
+							var totalwin = wins.reduce(getSum);
+							$('#gained').val(totalwin);
+						}
+						else{
+							$('#goldearned').css({ 'background-color': 'black','color':'white'});
+							events.push({location:'House',time: new Date().toLocaleString(), amount:0});}
+							output();
+							if(trys==0){ gameEnd();}
+							check();
+break;
+
+
+
+case "CASINO":
+document.getElementById('characterninja').style.top=-140 + "px";
+document.getElementById('characterninja').style.left=15 + "px";
+						--trys;	
+						$('#trys').val(trys);
+						percent = Math.floor((Math.random() * 10) + 1);
+						var gold =  Math.floor( Math.random() * ( 1 + 50 - 40 ) ) + 40;
+						++curclick;
+						if(percent>5){
+							goldearned+=gold;
+							wins.push(gold);
+							$('#goldearned').val(goldearned);
+							$('#goldearned').css({ 'background-color': 'green','color':'black'});
+							events.push({location:'Casino',time: new Date().toLocaleString(), amount:gold});
+							var totalwin = wins.reduce(getSum);
+							$('#gained').val(totalwin);}
+						else{
+							goldearned-=gold;
+							debits.push(gold);
+							$('#goldearned').val(goldearned);
+							$('#goldearned').css({ 'background-color': 'red','color':'black'});
+							events.push({location:'Casino',time: new Date().toLocaleString(), amount:-gold});
+							var totalloss =debits.reduce(getSum);
+							$('#lost').val(totalloss);}
+						output();
+						if(trys==0){
+						gameEnd();}
+						check();
+break;
+
+
+
+
+case "MINE":
+document.getElementById('characterninja').style.top=10 + "px";
+document.getElementById('characterninja').style.left=-200 + "px";
+						--trys;	
+						$('#trys').val(trys);
+						percent = Math.floor((Math.random() * 10) + 1);
+						var gold = Math.floor((Math.random() * 25));
+						++curclick;
+						if(percent>2){
+							goldearned+=gold
+							wins.push(gold);
+							$('#goldearned').val(goldearned);
+							$('#goldearned').css({ 'background-color': 'green','color':'black'});
+							events.push({location:'Gold Mine',time: new Date().toLocaleString(), amount:gold});
+							var totalwin = wins.reduce(getSum);
+							$('#gained').val(totalwin);
+						}
+						else{
+							
+							$('#goldearned').css({ 'background-color': 'black','color':'white'});
+							events.push({location:'Gold Mine',time: new Date().toLocaleString(), amount:0});
+						}
+						output();
+						if(trys==0){
+							gameEnd();
+							disable();
+						}
+						check();
+break;
+}
+}
+				
+				function output(){
+					if(events[curclick]['amount']>0){
+						$("#record1").append("<p class = 'win'> Location :"+events[curclick]['location']+"; Time: "+events[curclick]['time']+"; Amount: "+events[curclick]['amount']+"</p>");	
+						$("#record2").append("<p class = 'win'> Location :"+events[curclick]['location']+"; Time: "+events[curclick]['time']+"; Amount: "+events[curclick]['amount']+"</p>");	
+					}
+					else if(events[curclick]['amount']<0){
+						$("#record1").append("<p class = 'lose'> Location :"+events[curclick]['location']+"; Time: "+events[curclick]['time']+"; Amount: "+events[curclick]['amount']+"</p>");	
+						$("#record3").append("<p class = 'lose'> Location :"+events[curclick]['location']+"; Time: "+events[curclick]['time']+"; Amount: "+events[curclick]['amount']+"</p>");	
+					}
+					else{
+						$("#record1").append("<p class = 'nogain'> Location :"+events[curclick]['location']+"; Time: "+events[curclick]['time']+"; Amount: "+events[curclick]['amount']+"</p>");	
+					}
+				}
+
+				function getSum(total, num) {
+					return total + num;
+				}
+				function gameEnd(){
+					var totalwin = wins.reduce(getSum);
+					var totallose = debits.reduce(getSum);
+					if(goldearned>=250){
+						alert('Congratulations You Won! :)');
+					}
+					else{
+						
+    					alert('Sorry You Lost! :(');
+    					window.location.href = '../index.html';
+					}
+					disable();
+				}
+				function disable(){
+					$('#cavebutton').attr('disabled',true);
+					$('#housebutton').attr('disabled',true);
+					$('#minebutton').attr('disabled',true);
+					$('#casinobutton').attr('disabled',true);
+					
+				}
+				function check(){
+					if(goldearned>=250 && trys>0){
+						var totalwin = wins.reduce(getSum);
+						var totallose = debits.reduce(getSum);
+						alert('Congratulations You Won! :)');
+						disable();
+					}
+				}
+				
+
+</script>
+</body>
+</html>

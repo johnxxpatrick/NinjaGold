@@ -1,0 +1,11 @@
+{
+  "name": "Ninja Gold",
+  "version": "1.0.0",
+  "description": "Ninja Gold",
+  "main": "index.html",
+  "repository": "git@github.com:jobelles/Ninja-Gold.git",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {}
+}

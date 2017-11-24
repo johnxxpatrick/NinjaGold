@@ -1,0 +1,429 @@
+body {
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: 0;
+  margin: 0;
+  width:100% ;
+  height:100%;
+  background-image: url("../images/templeopacity.png");
+  background-repeat:no-repeat;
+  background-attachment:fixed; 
+  background-size: cover;
+}
+
+.imgcontainer {
+    text-align: center;
+    position: relative;
+    background-color: white;
+
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 10%;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.regcontainer {
+  
+    background: black;
+    color: white;
+}
+ .regcontainer h2 {
+  font-family: agency fb;
+  color: red;
+ }
+
+.modalDialog {
+        position: fixed;
+        font-family: sans-serif;
+        font-size: 16px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin-top: -50px;
+        background: rgba(0,0,0,0.8);
+        z-index: 99999;
+        opacity:0;
+        -webkit-transition: opacity 400ms ease-in;
+        -moz-transition: opacity 400ms ease-in;
+        transition: opacity 400ms ease-in;
+        pointer-events: none;
+
+    }
+
+    .modalDialog:target {
+        opacity:1;
+        pointer-events: auto;
+    }
+
+    .modalDialog > div {
+        width: 400px;
+        position: relative;
+        margin: 10% auto;
+        padding: 5px 20px 13px 20px;
+        border-radius: 10px;
+        background: #fff;
+        background: -moz-linear-gradient(#fff, #999);
+        background: -webkit-linear-gradient(#fff, #999);
+        background: -o-linear-gradient(#fff, #999);
+    }
+
+    .close {
+        background: #606061;
+        color: #FFFFFF;
+        line-height: 25px;
+        position: absolute;
+        right: -12px;
+        text-align: center;
+        top: -10px;
+        width: 24px;
+        text-decoration: none;
+        font-weight: bold;
+        -webkit-border-radius: 12px;
+        -moz-border-radius: 12px;
+        border-radius: 12px;
+        -moz-box-shadow: 1px 1px 3px #000;
+        -webkit-box-shadow: 1px 1px 3px #000;
+        box-shadow: 1px 1px 3px #000;
+    }
+
+    .close:hover { background: #00d9ff; } 
+  
+  .containers {
+    padding: 80px 120px;
+}
+
+.button-row {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: inline-box;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+.button-row > div {
+  position: relative;
+  width: 160px;
+  height: 50px;
+  margin: 0 15px;
+  -webkit-perspective: 1000px;
+  -moz-perspective: 1000px;
+  perspective: 1000px;
+}
+.button-row > div > a {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: translateZ(-25px);
+  -moz-transform: translateZ(-25px);
+  -ms-transform: translateZ(-25px);
+  -o-transform: translateZ(-25px);
+  transform: translateZ(-25px);
+  -webkit-transition: -webkit-transform 0.25s;
+  -moz-transition: -moz-transform 0.25s;
+  transition: transform 0.25s;
+}
+.button-row > div > a::before, .button-row > div > a::after {
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 160px;
+  height: 50px;
+  position: absolute;
+  border: 5px solid black;
+  box-sizing: border-box;
+  content: attr(title);
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+.button-row > div > a::before {
+  background-color: #000;
+  color: #fff;
+  -webkit-transform: rotateY(0deg) translateZ(25px);
+  -moz-transform: rotateY(0deg) translateZ(25px);
+  -ms-transform: rotateY(0deg) translateZ(25px);
+  -o-transform: rotateY(0deg) translateZ(25px);
+  transform: rotateY(0deg) translateZ(25px);
+}
+.button-row > div > a::after {
+  background-color: #fff;
+  border-color: #000;
+  color: #000;
+  -webkit-transform: rotateX(90deg) translateZ(25px);
+  -moz-transform: rotateX(90deg) translateZ(25px);
+  -ms-transform: rotateX(90deg) translateZ(25px);
+  -o-transform: rotateX(90deg) translateZ(25px);
+  transform: rotateX(90deg) translateZ(25px);
+}
+.button-row > div > a:hover {
+  -webkit-transform: translateZ(-25px) rotateX(-90deg);
+  -moz-transform: translateZ(-25px) rotateX(-90deg);
+  -ms-transform: translateZ(-25px) rotateX(-90deg);
+  -o-transform: translateZ(-25px) rotateX(-90deg);
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+.main, h1 {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: box;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+html, body, .main {
+  height: 100%;
+  
+}
+div.container{
+    position: relative;
+  margin-left:1px;
+} 
+
+div.character{
+  margin-top: 10px;
+  border-radius: 5px;
+  margin-left: 8px;
+  width: auto;
+  background-color: #262b33;
+
+}
+div.charactercontainer{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: right; 
+  width: 150px; 
+  height: 510px; 
+  background-color: black;
+
+}
+div.mainboardgame{
+  margin-top: 10px;
+  border-radius: 5px;
+  margin-left: 8px;
+  width: auto;
+  background-color: #262b33;
+
+}
+
+div.boardgame{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: right; 
+  width: 720px; 
+  height: 510px; 
+  background-color: black;
+
+
+
+}
+
+div.maingamelog{
+  background-color: #262b33;
+  margin-top: 10px;
+  margin-left: 5px;
+  width: auto;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+div.gamelog{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  position: right; 
+  width: 360px; 
+  height: 510px; 
+  background-color: white;
+
+
+}
+
+div.gamelog-title{
+  font-family: century gothic;
+  font-size: 10px;
+}
+
+h3.panel-title{
+  margin-top: -20px;
+  text-align: center;
+
+}
+
+.textboxlogs{
+  padding-top: 20px; 
+
+}
+.log-container{
+  width: 900px;
+  border: 1px solid white;
+   margin-top: 20px; 
+  border-radius: 10px;
+}
+.places{
+  margin-top: 20px;
+  margin-left: 150px;
+  width:800px;
+  height: 500px;
+}
+.img{
+
+  float:left;
+  width:100%;
+  height:100%;
+}
+.img-leftpadding{
+  padding-left: 20px;
+}
+.img-rightpadding{
+  padding-right:20px;
+}
+  .textbox-margin{
+  margin-bottom: 10px;
+  color:black;
+  font-weight: bold;
+}
+
+.buttoncasino{
+  position: absolute;
+  height:30px;
+  margin-top:80px;
+  margin-left: 300px;
+  width:100px;
+  padding:5px;
+}
+.buttoncave{
+  position: absolute;
+  height:30px;
+  margin-top:400px;
+  margin-left: 300px;
+  width:100px;
+  padding:5px;
+  }
+.buttonhouse{
+  position: absolute;
+  height:30px;
+  margin-top: 230px;
+  margin-left: 510px;
+  width:100px;
+  padding:5px;
+  }
+.buttonmine{
+  position: absolute;
+  height:30px;
+  margin-top: 230px;
+  margin-left: 85px;
+  width:100px;
+  padding:5px;
+}
+.gamelog-container{
+  width: 900px;
+  border: 1px solid white;
+   margin-top: 20px; 
+  border-radius: 10px;
+}
+.win{
+  margin-top: 10px;
+  line-height: 5px;
+  color:green;
+}
+.lose{
+  margin-top: 10px;
+  line-height: 5px;
+  color:red;
+}
+.nogain{
+  margin-top: 10px;
+  line-height: 5px;
+  color:black;
+}
+.pan-style{
+   height:250px;
+   overflow-y: auto;
+}
+
+.page{
+  padding-left: 18px;
+  margin-left: 15%;
+  width:1024px;
+  height: 100%;
+  background-color:#262b33;
+  color:gold;
+
+}
+.ninjalogobanner{
+   height: 100px;
+   width: 1360px;
+   padding-top: 10px;
+}
+.ninjalogoo {
+  margin-top: -80px;
+  height: 380px;
+  width: 290;
+}
+
+.ninjagif{
+  position: absolute;
+  margin-left: 300px;
+  margin-top:200px;
+  height: 110px;
+  width: 110px;
+}
+.btnreset
+{
+  width: 120px;
+  margin-top:5px;
+  }
+.btnplayagain
+{
+  width: 120px;
+  margin-top: 5px
+
+}
+.btnstart
+{
+  width: 120px;
+  margin-top: 170px
+
+}
+
+strong {
+  color: white;
+}
+
+.switchninja{
+  margin-left: 15px;
+  margin-top: 3px;
+  width: 120px;
+  border-radius: 5px;
+
+}
+
+
+
+
+
+
+
